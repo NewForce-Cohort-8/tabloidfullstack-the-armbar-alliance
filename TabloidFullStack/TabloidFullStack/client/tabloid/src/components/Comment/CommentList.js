@@ -37,8 +37,38 @@ export const CommentList = () => {
               </Table>
             </div>
           </div>
+          {/* 2 buttons to post details - boolean with true false conditions honey rae */}
+          
         </div>
       
       </>
       )
   }
+
+//   return (
+//     <>
+//       {tabloidUserObject.postId ? (
+//         <>
+//           <button
+//             onClick={() => {
+//               viewComments(true);
+//             }}
+//           >
+//             Emergency Only
+//           </button>
+//           <button
+//             onClick={() => {
+//               setEmergency(false);
+//             }}
+//           >
+//             Show all
+//           </button>
+//         </>
+//       ) : (
+//         <>
+//           <button onClick={() => navigate("/ticket/create")}>
+//             Create Ticket
+//           </button>
+//           <button onClick={() => setIsTicketOpen(true)}>Open Comments</button>
+//           <button onClick={() => setIsTicketOpen(false)}>Return to Post</button>
+//         </>

@@ -52,7 +52,7 @@ export const CommentForm = () => {
                                     required autoFocus
                                     type="text"
                                     className="form-control"
-                                    placeholder="Enter the subbject of your comment here"
+                                    placeholder="Enter the subject of your comment here"
                                     value={comment.subject}
                                     onChange={
                                         (event) => {
