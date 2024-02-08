@@ -36,11 +36,30 @@ export default function Header({isLoggedIn, setIsLoggedIn}) {
 
               </>
               
+            {isLoggedIn && 
+                <>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/">Home</NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/categories">Category Management</NavLink>
+              </NavItem>
+
+              </>
+              
+              <NavItem>
+              <NavLink tag={RRNavLink} to="/posts">Posts</NavLink>
+            </NavItem>
+            </>
             }
           </Nav>
           <Nav navbar>
             {isLoggedIn &&
               <>
+              <NavItem>
+                  <NavLink tag={RRNavLink} to="/tags">Tag Management</NavLink>
+                </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"
                     style={{ cursor: "pointer" }} onClick={() => {
@@ -58,6 +77,7 @@ export default function Header({isLoggedIn, setIsLoggedIn}) {
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/register">Register</NavLink>
                 </NavItem>
+                
               </>
             }
           </Nav>
