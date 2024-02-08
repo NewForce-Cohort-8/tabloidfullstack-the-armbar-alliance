@@ -7,6 +7,12 @@ export const getAllPosts = () => {
     .then((res) => res.json())
 };
 
+// https://localhost:5001/api/Post/1
+export const getPostById = (id) => {
+    return fetch(`${baseUrl}/${id}`)
+    .then((res) => res.json())
+};
+
 // export const addPost = (singlePost) => { 
 //   return fetch(baseUrl, {
 //     method: "POST",
@@ -32,4 +38,4 @@ export const getAllPosts = () => {
 // export const getPostByIdWithComments = (id) => {
 //     return fetch(`${baseUrl}/${id}/PostWithComments`)
 //     .then((res) => res.json())
-//}
+//
