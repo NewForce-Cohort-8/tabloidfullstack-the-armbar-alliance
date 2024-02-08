@@ -19,5 +19,12 @@ namespace TabloidFullStack.Controllers
         {
             return Ok(_tagRepository.GetAll());
         }
+
+        [HttpPost]
+        public IActionResult Post(Tags tags)
+        {
+            _tagRepository.Add(tags);
+            return CreatedAtAction("Get", new { id = tags.Id }, tags);
+        }
     }
 }

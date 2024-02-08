@@ -9,7 +9,7 @@ const TagList = () => {
   const getTags = () => getAllTags().then(allTags => setTags(allTags)); 
   ;
 
-  const updateTagsState = () => {
+  const updateTagState = () => {
     return getAllTags()
     .then((tagsArray) => {
         setTags(tagsArray)
@@ -22,7 +22,9 @@ const TagList = () => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">
-          <p>Tags:</p>
+        <TagForm updateTagState = {getTags}/>
+        <br></br>
+          <p><b>List of Tags:</b></p>
         {tags.map((tag) => (
             <Tags key={tag.id} tag={tag}/>
         ))}

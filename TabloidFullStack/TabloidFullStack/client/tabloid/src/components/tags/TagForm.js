@@ -1,18 +1,34 @@
 import { useState } from "react";
+import { addTag } from "../../APIManagers/TagManager"
 
 export const TagForm = ({updateTagState}) => {
     const [newTag, setNewTag] = useState(
         {
-            Id: "",
-            Name: ""
+            Name: "",
+            TagId: ""
         }
     )
+
+    const clickTheSaveButton = (e) => {
+        e.preventDefault()
+
+        const newTagToSendToAPI = {
+            Name: newTag.Name,
+            TagId: 1
+        }
+
+        addTag(newTagToSendToAPI)
+        .then(setNewTag({
+            name: "",
+            tagId: 1
+        })).then(() => updateTagState())
+    }
 
 
 return (
     <>
      <form className="tag-form">
-        <h2 className="tag-form-name">Tags List</h2>
+        <h4 className="tag-form-name">Create a New Tag:</h4>
         <fieldset>
         <div className="tag-form-group">
         <input
@@ -28,6 +44,8 @@ return (
                             } />
                     </div>
             </fieldset>
+            <button
+            onClick={(clickEvent) => clickTheSaveButton(clickEvent)} className="btn btn-primary">Submit Tag</button>
         </form>
 
     </> )
