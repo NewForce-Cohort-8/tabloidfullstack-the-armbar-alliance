@@ -24,16 +24,16 @@ namespace TabloidFullStack.Controllers
             return Ok(_postRepository.GetAll());
         }
 
-        //    [HttpGet("{id}")]
-        //    public IActionResult Get(int id)
-        //    {
-        //        var post = _postRepository.GetById(id);
-        //        if (post == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        return Ok(post);
-        //    }
+            [HttpGet("{id}")]
+            public IActionResult Get(int id)
+            {
+                var post = _postRepository.GetPostById(id);
+                if (post == null)
+                {
+                    return NotFound();
+                }
+                return Ok(post);
+            }
 
         //    [HttpPost]
         //    public IActionResult Post(Post post)
@@ -42,17 +42,17 @@ namespace TabloidFullStack.Controllers
         //        return CreatedAtAction(nameof(Get), new { id = post.Id }, post);
         //    }
 
-        //    [HttpPut("{id}")]
-        //    public IActionResult Put(int id, Post post)
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, Post post)
+        //{
+        //    if (id != post.Id)
         //    {
-        //        if (id != post.Id)
-        //        {
-        //            return BadRequest();
-        //        }
-
-        //        _postRepository.Update(post);
-        //        return NoContent();
+        //        return BadRequest();
         //    }
+
+        //    _postRepository.Update(post);
+        //    return NoContent();
+        //}
 
         //    [HttpDelete("{id}")]
         //    public IActionResult Delete(int id)
@@ -62,4 +62,4 @@ namespace TabloidFullStack.Controllers
         //    }
         //}
     }
-}
+    }

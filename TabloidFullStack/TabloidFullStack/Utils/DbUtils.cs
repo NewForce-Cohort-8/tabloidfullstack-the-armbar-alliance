@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Data;
 
 
 namespace TabloidFullStack.Utils
@@ -102,6 +103,11 @@ namespace TabloidFullStack.Utils
             return !IsDbNull(reader, column);
         }
 
+        public static bool GetBoolean(SqlDataReader reader, string column)
+        {
+            return reader.GetBoolean(Convert.ToString(column));
+        }
+
         /// <summary>
         ///  Add a parameter to the given SqlCommand object and gracefully handle null values.
         /// </summary>
@@ -119,5 +125,6 @@ namespace TabloidFullStack.Utils
                 cmd.Parameters.AddWithValue(name, value);
             }
         }
+
     }
 }
