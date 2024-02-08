@@ -1,25 +1,19 @@
 import React from "react";
 
-const baseUrl = '/api/Post';
+const baseUrl = '/api/Categories';
 
-export const getAllPosts = () => {
+export const getAllCategories = () => {
   return fetch(baseUrl) 
     .then((res) => res.json())
 };
 
-// https://localhost:5001/api/Post/1
-export const getPostById = (id) => {
-    return fetch(`${baseUrl}/${id}`)
-    .then((res) => res.json())
-};
-
-// export const addPost = (singlePost) => { 
+// export const addCategory = (singleCategory) => { 
 //   return fetch(baseUrl, {
 //     method: "POST",
 //     headers: {
 //       "Content-Type": "application/json",
 //     },
-//     body: JSON.stringify(singlePost),
+//     body: JSON.stringify(singleCategory),
 //   });
 // };
 // //https://localhost:5001/api/Post/search?q=stop&sortDesc=true
@@ -38,4 +32,4 @@ export const getPostById = (id) => {
 // export const getPostByIdWithComments = (id) => {
 //     return fetch(`${baseUrl}/${id}/PostWithComments`)
 //     .then((res) => res.json())
-//
+// }
