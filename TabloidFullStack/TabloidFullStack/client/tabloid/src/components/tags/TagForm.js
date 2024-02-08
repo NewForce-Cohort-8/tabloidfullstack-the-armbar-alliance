@@ -4,8 +4,7 @@ import { addTag } from "../../APIManagers/TagManager"
 export const TagForm = ({updateTagState}) => {
     const [newTag, setNewTag] = useState(
         {
-            Name: "",
-            TagId: ""
+            Name: ""
         }
     )
 
@@ -13,14 +12,12 @@ export const TagForm = ({updateTagState}) => {
         e.preventDefault()
 
         const newTagToSendToAPI = {
-            Name: newTag.Name,
-            TagId: 1
+            Name: newTag.Name
         }
 
         addTag(newTagToSendToAPI)
         .then(setNewTag({
-            name: "",
-            tagId: 1
+            Name: ""
         })).then(() => updateTagState())
     }
 
@@ -34,11 +31,11 @@ return (
         <input
             type="text"
             id="name"
-            value={newTag.name}
+            value={newTag.Name}
             onChange={
             (event) => {
             const copy = { ...newTag }
-                copy.name = event.target.value
+                copy.Name = event.target.value
                     setNewTag(copy)
                                 }
                             } />

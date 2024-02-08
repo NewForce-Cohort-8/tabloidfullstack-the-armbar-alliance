@@ -9,7 +9,7 @@ export const getAllTags = () => {
 
 export const addTag = (singleTag) => { 
   return fetch(baseUrl, {
-    method: "TAG",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
