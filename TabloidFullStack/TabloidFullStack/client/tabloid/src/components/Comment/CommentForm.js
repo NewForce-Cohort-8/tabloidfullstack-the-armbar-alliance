@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { addComment } from "../../Managers/CommentManager.js"
 import { Form, FormGroup, Card, CardBody, Label, Input, Button } from "reactstrap";
-
+import { getAllPosts } from "../../Managers/PostManager.js";
 
 
 export const CommentForm = () => {
@@ -16,7 +16,6 @@ export const CommentForm = () => {
     const timezoneOffset = offset * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 
-    
    
     const [comment, update] = useState({
         postId: postId, 
@@ -52,7 +51,7 @@ export const CommentForm = () => {
                                     required autoFocus
                                     type="text"
                                     className="form-control"
-                                    placeholder="Enter the subject of your comment here"
+                                    placeholder="Enter the sbject of your comment here"
                                     value={comment.subject}
                                     onChange={
                                         (event) => {
@@ -70,7 +69,7 @@ export const CommentForm = () => {
                                     required autoFocus
                                     type="text"
                                     className="form"
-                                    placeholder="Write your comment here"
+                                    placeholder="Write Comment here"
                                     value={comment.content}
                                     onChange={
                                         (event) => {

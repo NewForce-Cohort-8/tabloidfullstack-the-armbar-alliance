@@ -1,39 +1,26 @@
-import { CardBody, Button } from "reactstrap"
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Table } from "reactstrap";
 
-export const Comment = ({ comment, getComments }) => {
-
-    const { id } = useParams();
-
-    const commentDateTime = new Date(comment.createDateTime);
-    const formattedDate = commentDateTime.toLocaleDateString();
-
-    const localTabloidUser = localStorage.getItem("userProfile");
-    const tabloidUserObject = JSON.parse(localTabloidUser);
-
-    const navigate = useNavigate();
-
-  
-        
+export const Comment = ({comment}) => {
     
-
-return (
-        <CardBody>
-            <div>
-                {/* bold text using inline style */}
-                <div> <span style={{ fontWeight: "bold" }}>Subject:</span> {comment.subject} </div>
-
-                {/* bold text using react strap class */}
-                <div> <span className="fw-bold">Author:</span> {comment.userProfile.displayName}</div>
-
-                {/* bold text using strong */}
-                 <div> <strong>Date:</strong> {formattedDate}</div> 
-
-                <div> {comment.content}</div>
-
-            
-            </div>
-        </CardBody>
-    )
+    return(
+        <><p className="text-left px-2">Post Title: <strong>{comment.post?.title}</strong></p><Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th>Content</th>
+                    <th>Subject</th>
+                    <th>Author</th>
+                    <th>Creation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{comment.content}</td>
+                    <td>{comment.subject}</td>
+                    <td>{comment.userProfile?.displayName}</td>
+                    <td>{comment.createDateTime}</td>
+                </tr>
+            </tbody>
+        </Table></>  
+    );
 }
