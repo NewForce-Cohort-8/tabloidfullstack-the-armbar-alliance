@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gifter.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
 
@@ -25,6 +26,13 @@ namespace TabloidFullStack.Controllers
         {
             _tagRepository.Add(tags);
             return CreatedAtAction("Get", new { id = tags.Id }, tags);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _tagRepository.Delete(id);
+            return NoContent();
         }
     }
 }
