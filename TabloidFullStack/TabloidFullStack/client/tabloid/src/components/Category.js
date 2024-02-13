@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardBody, Button } from "reactstrap";
 
 
-export const Category = ({ category, onEdit }) => {
+export const Category = ({ category, onEdit, onDelete }) => {
   return (
     <Card className="m-4">
       <CardBody>
@@ -12,7 +12,9 @@ export const Category = ({ category, onEdit }) => {
           </h5>
         </p>
         <Button onClick={() => onEdit(category.id)}>Edit</Button>
-      </CardBody>
+        <span style={{ margin: '0 5px' }}></span>
+        <Button onClick={() => onDelete(category.id)} color="danger">Delete</Button> 
+       </CardBody>
     </Card>
   );
 };

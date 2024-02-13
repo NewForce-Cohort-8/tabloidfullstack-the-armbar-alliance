@@ -29,10 +29,12 @@ export const CategoryForm = ({updateCategoriesState}) => {
     return (
         <>
          <form className="category-form">
-            <h2 className="category-form-name">Create a New Category</h2>
+         
+            
             <fieldset>
                     <div className="form-group">
-                        <label htmlFor="name">Name:</label>
+                    <h3><b><label htmlFor="name">Add a new Category:</label></b></h3>
+
                         <input
                             type="text"
                             id="name"
@@ -43,12 +45,14 @@ export const CategoryForm = ({updateCategoriesState}) => {
                                     copy.name = event.target.value
                                     setNewCategory(copy)
                                 }
+                                
                             } />
                     </div>
             </fieldset>
+            <br></br>
             
            <button
-            onClick={(clickEvent) => clickTheSaveButton(clickEvent)} className="btn btn-primary">Submit Category</button>
+            onClick={(clickEvent) => clickTheSaveButton(clickEvent)} className="btn btn-primary">Submit New Category</button>
         </form>
         </>
     )
