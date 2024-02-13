@@ -17,20 +17,17 @@ export const addCategory = (singleCategory) => {
   });
 };
 
-// //https://localhost:5001/api/Post/search?q=stop&sortDesc=true
-// export const SearchPosts = (searchTerm) => {
-//     return fetch(`${baseUrl}/search?q=${searchTerm}&sortDesc=true`)
-//     .then((res) => res.json())
-// }
+export const editCategory = (category) => {
+    return fetch(`${baseUrl}/${category.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(category)
+    })
+  };
 
-// //https://localhost:5001/api/Post/GetWithComments
-// export const getAllPostsWithComments = () => {
-//     return fetch(`${baseUrl}/GetWithComments`)
-//     .then((res) => res.json())
-// }
+  export const getCategoryById = (id) => {
+	return fetch(`${baseUrl}/${id}`).then((res) => res.json());
+};
 
-// //https://localhost:5001/api/Post/1/PostWithComments
-// export const getPostByIdWithComments = (id) => {
-//     return fetch(`${baseUrl}/${id}/PostWithComments`)
-//     .then((res) => res.json())
-// }
