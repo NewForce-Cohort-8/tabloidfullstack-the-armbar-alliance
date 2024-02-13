@@ -6,11 +6,11 @@ export const Tags = ({ tag }) => {
   return (
     <div className="m-4">
       <div>
-        <p>
-          {/* <Link to={`/tags/${tag.id}`}>
+        {/* <p>
+          <Link to={`/tags/${tag.id}`}>
           <strong>{tag.name}</strong>
-          </Link> */}
-        </p>
+          </Link>
+        </p> */}
         <div>
           <p>{tag.name}</p>
         </div>

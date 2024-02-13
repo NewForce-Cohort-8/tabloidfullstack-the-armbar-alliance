@@ -2,8 +2,7 @@
 using TabloidFullStack.Repositories;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
-using TabloidFullStack.Models;
-using TabloidFullStack.Repositories;
+using TabloidFullStack.Utils;
 
 namespace TabloidFullStack.Repositories
 {
@@ -69,6 +68,24 @@ namespace TabloidFullStack.Repositories
             }
         }
 
+        public void Add(Tags tags)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Tag (Name)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name)";
+
+                    DbUtils.AddParameter(cmd, "@Name", tags.Name);
+
+                    tags.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
 
     }
 }
