@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TabloidFullStack.Repositories;
 using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
+using Microsoft.Extensions.Hosting;
 
 namespace TabloidFullStack.Controllers
 {
@@ -35,12 +36,12 @@ namespace TabloidFullStack.Controllers
                 return Ok(post);
             }
 
-        //    [HttpPost]
-        //    public IActionResult Post(Post post)
-        //    {
-        //        _postRepository.Create(post.Title, post.Content, post.CategoryId, post.ImageLocation, post.UserProfileId);
-        //        return CreatedAtAction(nameof(Get), new { id = post.Id }, post);
-        //    }
+        [HttpPost]
+        public IActionResult Post(Post post)
+        {
+            _postRepository.Add(post);
+            return CreatedAtAction(nameof(Get), new { id = post.Id }, post);
+        }
 
         //[HttpPut("{id}")]
         //public IActionResult Put(int id, Post post)

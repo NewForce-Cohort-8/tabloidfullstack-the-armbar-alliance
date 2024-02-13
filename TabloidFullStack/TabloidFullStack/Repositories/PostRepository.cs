@@ -7,9 +7,9 @@ using TabloidFullStack.Repositories;
 using TabloidFullStack.Utils;
 using Microsoft.Data.SqlClient;
 
-namespace Gifter.Repositories
+namespace TabloidFullStack.Repositories
 {
-    
+
 
     public class PostRepository : BaseRepository, IPostRepository
     {
@@ -126,7 +126,7 @@ namespace Gifter.Repositories
                 //    Id = DbUtils.GetInt(reader, "CategoryId"),
                 //    Name = DbUtils.GetString(reader, "CategoryName"),
                 //},
-                UserProfile = new UserProfile()
+                User = new UserProfile()
                 {
                     Id = DbUtils.GetInt(reader, "AuthorId"),
                     FirstName = DbUtils.GetString(reader, "FirstName"),
@@ -142,6 +142,31 @@ namespace Gifter.Repositories
                     }
                 }
             };
+        }
+        public void Add(Post post)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Post (Title, Content, ImageLocation, CreateDateTime, PublishDateTime, IsApproved, CategoryId, UserProfileId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Title, @Content, @ImageLocation, @CreateDateTime, @PublishDateTime, @IsApproved, @CategoryId, @UserProfileId)";
+
+                    DbUtils.AddParameter(cmd, "@Title", post.Title);
+                    DbUtils.AddParameter(cmd, "@Content", post.Content);
+                    DbUtils.AddParameter(cmd, "@ImageLocation", post.ImageLocation);
+                    DbUtils.AddParameter(cmd, "@CreateDateTime", post.CreateDateTime);
+                    DbUtils.AddParameter(cmd, "@PublishDateTime", post.PublishDateTime);
+                    DbUtils.AddParameter(cmd, "@IsApproved", post.IsApproved);
+                    DbUtils.AddParameter(cmd, "@CategoryId", post.CategoryId);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", post.UserProfileId);
+
+                    post.Id = (int)cmd.ExecuteScalar();
+                }
+            }
         }
     }
 }
@@ -324,28 +349,6 @@ namespace Gifter.Repositories
 //            }
 //        }
 
-//        public void Add(Post post)
-//        {
-//            using (var conn = Connection)
-//            {
-//                conn.Open();
-//                using (var cmd = conn.CreateCommand())
-//                {
-//                    cmd.CommandText = @"
-//                        INSERT INTO Post (Title, Caption, DateCreated, ImageUrl, UserProfileId)
-//                        OUTPUT INSERTED.ID
-//                        VALUES (@Title, @Caption, @DateCreated, @ImageUrl, @UserProfileId)";
-
-//                    DbUtils.AddParameter(cmd, "@Title", post.Title);
-//                    DbUtils.AddParameter(cmd, "@Caption", post.Caption);
-//                    DbUtils.AddParameter(cmd, "@DateCreated", post.DateCreated);
-//                    DbUtils.AddParameter(cmd, "@ImageUrl", post.ImageUrl);
-//                    DbUtils.AddParameter(cmd, "@UserProfileId", post.UserProfileId);
-
-//                    post.Id = (int)cmd.ExecuteScalar();
-//                }
-//            }
-//        }
 
 //        public void Update(Post post)
 //        {
