@@ -4,7 +4,9 @@ import { Table } from "reactstrap";
 export const Comment = ({comment}) => {
     
     return(
-        <><p className="text-left px-2">Post Title: <strong>{comment.post?.title}</strong></p><Table striped bordered hover>
+         <>
+        {/* <p className="text-left px-2">Post Title: <strong>{comment.post?.title}</strong></p> */}
+        {/* <Table striped bordered hover> */}
             <thead>
                 <tr>
                     <th>Content</th>
@@ -21,6 +23,7 @@ export const Comment = ({comment}) => {
                     <td>{comment.createDateTime}</td>
                 </tr>
             </tbody>
-        </Table></>  
+        {/* </Table> */}
+        </>  
     );
 }
