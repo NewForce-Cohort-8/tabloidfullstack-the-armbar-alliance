@@ -37,7 +37,7 @@ namespace TabloidFullStack.Repositories
                                LEFT JOIN Category c ON p.CategoryId = c.Id
                                LEFT JOIN UserProfile u ON p.UserProfileId = u.Id
                                LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
-                         WHERE p.IsApproved = 1 AND p.PublishDateTime < SYSDATETIME()
+                         WHERE p.IsApproved = 1
                          ORDER BY p.PublishDateTime DESC";
 
                     using (var reader = cmd.ExecuteReader())
@@ -93,8 +93,7 @@ namespace TabloidFullStack.Repositories
                                LEFT JOIN UserProfile up on up.Id = p.UserProfileId
                
                                LEFT JOIN UserType ut ON up.UserTypeId = ut.id
-                        WHERE p.Id = @Id AND p.PublishDateTime < SYSDATETIME()
-                        ORDER BY p.PublishDateTime DESC
+                        WHERE p.Id = @Id
                         ";
                     DbUtils.AddParameter(cmd, "@Id", id);
                     var reader = cmd.ExecuteReader();
