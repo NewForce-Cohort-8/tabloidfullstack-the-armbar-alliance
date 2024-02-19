@@ -32,7 +32,7 @@ console.log(comments)
           <div className="row justify-content-center">
             <div className="cards-column">
                 {comments?.map((singleComment) => {
-                 return <>  <h1>Comments:</h1>
+                 return <> 
                           <h2>Username: {singleComment.userProfile.displayName}</h2>
                           <h2>Subject: {singleComment.subject}</h2>
                            <h2>Content: {singleComment.content}</h2>
