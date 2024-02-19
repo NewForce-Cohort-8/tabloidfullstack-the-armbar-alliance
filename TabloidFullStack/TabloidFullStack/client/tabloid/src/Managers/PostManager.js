@@ -22,6 +22,12 @@ export const addPost = (singlePost) => {
     body: JSON.stringify(singlePost),
   });
 };
+
+export const deletePost = (id) => {
+  return fetch(`${baseUrl}/${id}`, {
+    method: "DELETE"
+  })
+}
 // //https://localhost:5001/api/Post/search?q=stop&sortDesc=true
 // export const SearchPosts = (searchTerm) => {
 //     return fetch(`${baseUrl}/search?q=${searchTerm}&sortDesc=true`)

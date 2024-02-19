@@ -8,5 +8,6 @@ namespace TabloidFullStack.Repositories
         
         List<Post> GetAll();
         Post GetPostById(int id);
+        void Delete(int id);
     }
 }

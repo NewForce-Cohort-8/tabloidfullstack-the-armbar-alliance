@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardImg, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 //              title: "",
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 //             isApproved: true,
 //             categoryId: "",
 //             UserProfileId: 1
-export const Post = ({ post }) => {
+export const Post = ({ post, onDelete }) => {
   return (
     <Card className="m-4">
         <CardImg top src={post.imageLocation} alt={post.title} />
@@ -29,6 +29,7 @@ export const Post = ({ post }) => {
                 </>
             ))}
         </div> */}
+        <Button onClick={() => onDelete(post.id)} color="danger">Delete</Button> 
       </CardBody>
     </Card>
   );
