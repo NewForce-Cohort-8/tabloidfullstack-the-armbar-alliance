@@ -23,6 +23,17 @@ namespace TabloidFullStack.Controllers
             return Ok(_categoryRepository.GetAll());
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var post = _categoryRepository.GetById(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return Ok(post);
+        }
+
 
         // POST api/<CategoriesController>
         [HttpPost]
@@ -34,8 +45,15 @@ namespace TabloidFullStack.Controllers
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Category category)
         {
+            if (id != category.Id)
+            {
+                return BadRequest();
+            }
+
+            _categoryRepository.Update(category);
+            return NoContent();
         }
 
         // DELETE api/<CategoriesController>/5
