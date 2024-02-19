@@ -30,12 +30,11 @@ namespace TabloidFullStack.Models
         [Required]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
-        public CategoryAttribute Category { get; set; }
+        public Category? Category { get; set; }
+        public string? CategoryName { get; set; }
 
         [DisplayName("Author")]
         public int UserProfileId { get; set; }
-        public UserProfile UserProfile { get; set; }
-        public string CategoryName { get; set; } // Add CategoryName property
-        public UserProfile User { get; set; } // Add User property
+        public UserProfile? User { get; set; }
     }
 }

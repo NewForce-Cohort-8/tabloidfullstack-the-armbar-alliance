@@ -7,6 +7,8 @@ import { AddComment } from "./Comment/CommentForm.js";
 import PostList from "./PostList";
 import TagList from "./tags/TagList";
 import { PostDetails } from "./PostDetails";
+import { EditCategory } from "./CategoryEdit";
+
 import { CommentList } from "./Comment/CommentList";
 
 export default function ApplicationViews() {
@@ -17,9 +19,11 @@ export default function ApplicationViews() {
         <Route path="/categories" element={<CategoryList />} />
         {/* <Route path = "/commentsbyId/:Id" element={<CommentList/>} /> */}
         <Route path='/Post/:postId/Comments/Add' element={<AddComment />} />
+        <Route path="/categories/edit/:id" element={<EditCategory />} />
         <Route path="/posts" element={<PostList />}/>
         <Route path="/posts/:id" element={<PostDetails /> } />
         <Route path="/tags" element={<TagList />} />
+        
       </Routes>
    );
  

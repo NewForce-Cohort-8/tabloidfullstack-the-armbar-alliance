@@ -9,7 +9,7 @@ import { CommentList } from "./Comment/CommentList";
 
 // import { Button } from "reactstrap";
 export const PostDetails = () => {
-    const [postDetails, setPostDetails] = useState([]);
+    const [postDetails, setPostDetails] = useState({});
     const { id } = useParams();
     useEffect(() => {
         getPostById(id)
@@ -22,6 +22,7 @@ export const PostDetails = () => {
     }, []);
     const navigate = useNavigate()
     //returns a list of all user profiles
+    // i need to fix the name stuff for details
     return (
     <>
    
@@ -29,7 +30,7 @@ export const PostDetails = () => {
       <div className="row justify-content-center">
         <div className="col-sm-12 col-lg-6">
         <Card className="m-4">
-      <CardImg top src={postDetails.imageUrl} alt={"image not available"} />
+      <CardImg top src={postDetails.imageLocation} alt={"image not available"} />
       <CardBody>
         <p>
         <Link to={`/posts/${postDetails.id}`}>
@@ -37,7 +38,8 @@ export const PostDetails = () => {
         </Link>
         </p>
         <p>{postDetails.content}</p>
-        <p className="text-left px-2">Posted by: <Link to={`/userprofile/${postDetails.userProfileId}`}>{postDetails.userProfile?.firstName} {postDetails.userProfile?.lastName}</Link>
+      
+        <p className="text-left px-2">Posted by: <Link to={`/userprofile/${postDetails.userProfileId}`}>{postDetails.userProfile?.displayName} {postDetails.userProfile?.lastName}</Link>
         </p>
         <p className="text-left px-2">Posted: {postDetails.publishDateTime}
         </p>

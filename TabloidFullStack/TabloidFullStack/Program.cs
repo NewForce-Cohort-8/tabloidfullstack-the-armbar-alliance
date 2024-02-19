@@ -1,5 +1,5 @@
 
-using Gifter.Repositories;
+using TabloidFullStack.Repositories;
 using TabloidFullStack.Repositories;
 
 namespace TabloidFullStack
