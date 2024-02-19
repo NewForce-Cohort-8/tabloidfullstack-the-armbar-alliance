@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Category } from "./Category";
 import { CategoryForm } from "./CategoryForm";
-import { getAllCategories } from "../Managers/CategoryManager";
+import { getAllCategories, deleteCategory } from "../Managers/CategoryManager"; 
 import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
@@ -17,6 +17,16 @@ const CategoryList = () => {
     return getAllCategories().then((categoryArray) => {
       setCategories(categoryArray);
     });
+  };
+
+  const handleDelete = (id) => { 
+    const confirmDelete = window.confirm("Are you sure you would like to delete this category?");
+    if (confirmDelete) {
+        // if Bad Request window.alert this category has dependencies it would go here...
+      deleteCategory(id).then(() => { 
+        getCategories();
+      });
+    }
   };
 
   useEffect(() => {
@@ -37,6 +47,7 @@ const CategoryList = () => {
               key={category.id}
               category={category}
               onEdit={handleEdit}
+              onDelete={handleDelete} 
             />
           ))}
         </div>
@@ -46,3 +57,4 @@ const CategoryList = () => {
 };
 
 export default CategoryList;
+

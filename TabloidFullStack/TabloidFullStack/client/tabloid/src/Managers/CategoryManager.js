@@ -27,6 +27,12 @@ export const editCategory = (category) => {
     })
   };
 
+  export const deleteCategory = (id) => {
+    return fetch(`${baseUrl}/${id}`, {
+      method: "DELETE"
+    })
+  }
+
   export const getCategoryById = (id) => {
 	return fetch(`${baseUrl}/${id}`).then((res) => res.json());
 };
