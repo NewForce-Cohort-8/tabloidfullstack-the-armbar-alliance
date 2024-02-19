@@ -5,6 +5,8 @@ import CategoryList from "./CategoryList";
 import PostList from "./PostList";
 import TagList from "./tags/TagList";
 import { PostDetails } from "./PostDetails";
+import { EditCategory } from "./CategoryEdit";
+
 
 export default function ApplicationViews() {
 
@@ -12,9 +14,11 @@ export default function ApplicationViews() {
       <Routes>
         <Route path="/" element={<Hello />} />
         <Route path="/categories" element={<CategoryList />} />
+        <Route path="/categories/edit/:id" element={<EditCategory />} />
         <Route path="/posts" element={<PostList />}/>
         <Route path="/posts/:id" element={<PostDetails />} />
         <Route path="/tags" element={<TagList />} />
+        
       </Routes>
    );
  

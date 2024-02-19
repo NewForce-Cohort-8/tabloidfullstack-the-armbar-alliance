@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Gifter.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
@@ -22,22 +23,45 @@ namespace TabloidFullStack.Controllers
             return Ok(_categoryRepository.GetAll());
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var post = _categoryRepository.GetById(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return Ok(post);
+        }
+
+
         // POST api/<CategoriesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Category(Category category)
         {
+            _categoryRepository.Add(category);
+            return CreatedAtAction("Get", new { id = category.Id }, category);
         }
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Category category)
         {
+            if (id != category.Id)
+            {
+                return BadRequest();
+            }
+
+            _categoryRepository.Update(category);
+            return NoContent();
         }
 
         // DELETE api/<CategoriesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _categoryRepository.Delete(id);
+            return NoContent();
         }
     }
 }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { addCategory } from "../Managers/CategoryManager";
+
 
 
 export const CategoryForm = ({updateCategoriesState}) => {
@@ -17,20 +19,22 @@ export const CategoryForm = ({updateCategoriesState}) => {
             UserProfileId: 1
         }
 
-        // addCategory(newCategoryToSendToAPI)
-        // .then(setNewCategory({
-        //     name: "",
-        //     UserProfileId: 1
-        // })).then(() => updateCategoriesState())
+        addCategory(newCategoryToSendToAPI)
+        .then(setNewCategory({
+            name: "",
+            UserProfileId: 1
+        })).then(() => updateCategoriesState())
     }
 
     return (
         <>
          <form className="category-form">
-            <h2 className="category-form-name">Create a New Category</h2>
+         
+            
             <fieldset>
                     <div className="form-group">
-                        <label htmlFor="name">Name:</label>
+                    <h3><b><label htmlFor="name">Add a new Category:</label></b></h3>
+
                         <input
                             type="text"
                             id="name"
@@ -41,43 +45,14 @@ export const CategoryForm = ({updateCategoriesState}) => {
                                     copy.name = event.target.value
                                     setNewCategory(copy)
                                 }
+                                
                             } />
                     </div>
             </fieldset>
-            {/* <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="caption">Caption:</label>
-                        <input
-                            type="text"
-                            id="caption"
-                            value={newCategory.caption}
-                            onChange={
-                                (event) => {
-                                    const copy = { ...newCategory }
-                                    copy.caption = event.target.value
-                                    setNewCategory(copy)
-                                }
-                            } />
-                    </div>
-            </fieldset>
-            <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="imageUrl">Image Url:</label>
-                        <input
-                            type="text"
-                            id="title"
-                            value={newPost.imageUrl}
-                            onChange={
-                                (event) => {
-                                    const copy = { ...newPost }
-                                    copy.imageUrl = event.target.value
-                                    setNewPost(copy)
-                                }
-                            } />
-                    </div>
-            </fieldset> */}
-            <button
-            onClick={(clickEvent) => clickTheSaveButton(clickEvent)} className="btn btn-primary">Submit Post</button>
+            <br></br>
+            
+           <button
+            onClick={(clickEvent) => clickTheSaveButton(clickEvent)} className="btn btn-primary">Submit New Category</button>
         </form>
         </>
     )

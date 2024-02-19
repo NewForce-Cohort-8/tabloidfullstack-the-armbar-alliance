@@ -1,29 +1,22 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Card, CardBody, Button } from "reactstrap";
 
 
-export const Category = ({ category }) => {
+export const Category = ({ category, onEdit, onDelete }) => {
   return (
     <Card className="m-4">
-      
-     <CardBody>
+      <CardBody>
         <p>
-          <Link to={`/categorys/${category.id}`}>
-          <strong>{category.name}</strong>
-          </Link>
+          <h5 to={`/categorys/edit${category.id}`}>
+            <strong>{category.name}</strong>
+          </h5>
         </p>
-        
-        
-        {/* <div>
-            {category.comments?.map((singleComment) => (
-                <>
-                <p>{singleComment.message}</p>
-                <p>{singleComment?.userProfile?.name}</p>
-                </>
-            ))}
-        </div> */}
-      </CardBody>
+        <Button onClick={() => onEdit(category.id)}>Edit</Button>
+        <span style={{ margin: '0 5px' }}></span>
+        <Button onClick={() => onDelete(category.id)} color="danger">Delete</Button> 
+       </CardBody>
     </Card>
   );
 };
+
+
