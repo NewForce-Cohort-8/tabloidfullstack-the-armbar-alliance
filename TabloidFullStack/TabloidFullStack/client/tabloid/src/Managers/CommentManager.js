@@ -9,12 +9,12 @@ export const GetPostcommentsbyId = (postId) => {
     .then((res) => res.json())
 };
 
-// export const addComment = (singlePost) => { 
-//     return fetch(baseUrl, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(singlePost),
-//     });
-//   }; 
+export const addComment = (singlePost) => { 
+    return fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(singlePost),
+    });
+   }; 

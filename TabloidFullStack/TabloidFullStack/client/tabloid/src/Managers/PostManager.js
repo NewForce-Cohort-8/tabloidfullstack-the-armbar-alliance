@@ -13,6 +13,7 @@ export const getPostById = (id) => {
     .then((res) => res.json())
 };
 
+
 // export const addPost = (singlePost) => { 
 //   return fetch(baseUrl, {
 //     method: "POST",
