@@ -43,24 +43,25 @@ namespace TabloidFullStack.Controllers
             return CreatedAtAction(nameof(Get), new { id = post.Id }, post);
         }
 
-        //[HttpPut("{id}")]
-        //public IActionResult Put(int id, Post post)
-        //{
-        //    if (id != post.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _postRepository.Update(post);
-        //    return NoContent();
-        //}
-
-        //    [HttpDelete("{id}")]
-        //    public IActionResult Delete(int id)
-        //    {
-        //        _postRepository.Delete(id);
-        //        return NoContent();
-        //    }
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postRepository.Delete(id);
+            return NoContent();
+        }
     }
-    }
+
+    //[HttpPut("{id}")]
+    //public IActionResult Put(int id, Post post)
+    //{
+    //    if (id != post.Id)
+    //    {
+    //        return BadRequest();
+    //    }
+
+    //    _postRepository.Update(post);
+    //    return NoContent();
+    //}
+
+}
+    
