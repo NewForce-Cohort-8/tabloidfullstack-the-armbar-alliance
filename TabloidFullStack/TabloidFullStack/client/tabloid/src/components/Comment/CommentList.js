@@ -28,6 +28,7 @@ export const CommentList = ({postId}) => {
   
 console.log(comments)
 
+//onclick button 
  
     return (<>
 
