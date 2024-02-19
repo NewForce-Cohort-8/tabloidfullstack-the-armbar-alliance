@@ -6,6 +6,7 @@ import PostList from "./PostList";
 import TagList from "./tags/TagList";
 import { PostDetails } from "./PostDetails";
 
+
 export default function ApplicationViews() {
 
  return(

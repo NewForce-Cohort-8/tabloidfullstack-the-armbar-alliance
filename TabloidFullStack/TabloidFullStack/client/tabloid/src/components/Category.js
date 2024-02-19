@@ -13,16 +13,6 @@ export const Category = ({ category }) => {
           <strong>{category.name}</strong>
           </Link>
         </p>
-        
-        
-        {/* <div>
-            {category.comments?.map((singleComment) => (
-                <>
-                <p>{singleComment.message}</p>
-                <p>{singleComment?.userProfile?.name}</p>
-                </>
-            ))}
-        </div> */}
       </CardBody>
     </Card>
   );
