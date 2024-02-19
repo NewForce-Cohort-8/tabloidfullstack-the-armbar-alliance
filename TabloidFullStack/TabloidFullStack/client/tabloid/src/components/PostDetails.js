@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getPostById } from "../Managers/PostManager";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 // import "./Posts.css"
 import { Card, CardImg, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ export const PostDetails = () => {
                 console.log("Error fetching user posts:", error);
             });
     }, []);
-
+    const navigate = useNavigate()
     //returns a list of all user profiles
     return (
     <>
@@ -41,6 +41,9 @@ export const PostDetails = () => {
         </p>
         <p className="text-left px-2">Posted: {postDetails.publishDateTime}
         </p>
+        <button
+           onClick={() => navigate(`/Post/${postDetails.id}/Comments/Add`)}
+           >Add Comnment</button>
         <CommentList postId={id}/>
       </CardBody>
     </Card>

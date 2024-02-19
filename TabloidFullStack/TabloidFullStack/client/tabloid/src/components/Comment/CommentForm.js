@@ -29,7 +29,9 @@ export const AddComment = () => {
 
 	return (
 		<Container>
-			<h3 className='my-4'>Add a new comment to post: {post.title}</h3>
+            <button>
+			<h3> className='my-4'Add a new comment to post: {post.title}</h3>
+            </button>
 			<Form>
 				<FormGroup className='mb-4'>
 					<Label for='subject'>Subject</Label>

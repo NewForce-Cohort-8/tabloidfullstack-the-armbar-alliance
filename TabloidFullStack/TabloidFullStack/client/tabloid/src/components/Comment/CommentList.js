@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetPostcommentsbyId } from "../../Managers/CommentManager.js";
+import { useNavigate } from "react-router-dom";
 // import { Comment } from "./Comment.js"; 
 
 export const CommentList = ({postId}) => {
@@ -16,7 +17,7 @@ export const CommentList = ({postId}) => {
   // }
 
   const parsedPostId = parseInt(postId)
-
+  const navigate = useNavigate()
 
     useEffect(() => {
       GetPostcommentsbyId(parsedPostId)
@@ -26,8 +27,13 @@ export const CommentList = ({postId}) => {
     }, []);
   
 console.log(comments)
+
  
     return (<>
+
+
+            
+
         <div className="comment-list">
           <div className="row justify-content-center">
             <div className="cards-column">
